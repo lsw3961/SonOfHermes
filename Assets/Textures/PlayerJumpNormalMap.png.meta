@@ -1,88 +1,70 @@
 fileFormatVersion: 2
-guid: 288891216764ba148a4f84e72e502367
+guid: df3913352fcd0934a8f322e7ebbf2988
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2941524017282512412
-    second: RunningAnimationNormalMap_0
+      213: -4402064142569374698
+    second: PlayerJumpNormalMap_0
   - first:
-      213: 3152649570208676000
-    second: RunningAnimationNormalMap_1
+      213: 4440933923640557682
+    second: PlayerJumpNormalMap_1
   - first:
-      213: -5165756834216870410
-    second: RunningAnimationNormalMap_2
+      213: -532098703269466132
+    second: PlayerJumpNormalMap_2
   - first:
-      213: -7406985686578792253
-    second: RunningAnimationNormalMap_3
+      213: -7961971372691137314
+    second: PlayerJumpNormalMap_3
   - first:
-      213: -4473845691591194814
-    second: RunningAnimationNormalMap_4
+      213: -109286972180154021
+    second: PlayerJumpNormalMap_4
   - first:
-      213: -2183730289285768884
-    second: RunningAnimationNormalMap_5
+      213: -3576677235110693672
+    second: PlayerJumpNormalMap_5
   - first:
-      213: 5941828430734240061
-    second: RunningAnimationNormalMap_6
+      213: 4577844583462246926
+    second: PlayerJumpNormalMap_6
   - first:
-      213: 2765349198111893191
-    second: RunningAnimationNormalMap_7
+      213: 8718021328804391167
+    second: PlayerJumpNormalMap_7
   - first:
-      213: -3364961177799067891
-    second: RunningAnimationNormalMap_8
+      213: 190396859435901054
+    second: PlayerJumpNormalMap_8
   - first:
-      213: 5204686220563952619
-    second: RunningAnimationNormalMap_9
+      213: 1668316265421250971
+    second: PlayerJumpNormalMap_9
   - first:
-      213: -2063477421256358127
-    second: RunningAnimationNormalMap_10
+      213: -2096696439350268794
+    second: PlayerJumpNormalMap_10
   - first:
-      213: 4777531084818110442
-    second: RunningAnimationNormalMap_11
+      213: -5656335311526257697
+    second: PlayerJumpNormalMap_11
   - first:
-      213: 536808792096431578
-    second: RunningAnimationNormalMap_12
+      213: 3578080002079045395
+    second: PlayerJumpNormalMap_12
   - first:
-      213: -970613213305300158
-    second: RunningAnimationNormalMap_13
+      213: -7306841231908732115
+    second: PlayerJumpNormalMap_13
   - first:
-      213: -3737006375058500775
-    second: RunningAnimationNormalMap_14
+      213: -2003050396931564941
+    second: PlayerJumpNormalMap_14
   - first:
-      213: 4093318819010965117
-    second: RunningAnimationNormalMap_15
+      213: 2677879547424040809
+    second: PlayerJumpNormalMap_15
   - first:
-      213: -5928929260540469088
-    second: RunningAnimationNormalMap_16
+      213: 7115328396025010341
+    second: PlayerJumpNormalMap_16
   - first:
-      213: 6232124401003215385
-    second: RunningAnimationNormalMap_17
+      213: 5536183124697571633
+    second: PlayerJumpNormalMap_17
   - first:
-      213: -1902970131720032702
-    second: RunningAnimationNormalMap_18
+      213: -1485784819472965760
+    second: PlayerJumpNormalMap_18
   - first:
-      213: 6348706527924264838
-    second: RunningAnimationNormalMap_19
+      213: -7600454585415994028
+    second: PlayerJumpNormalMap_19
   - first:
-      213: 1662686952880550663
-    second: RunningAnimationNormalMap_20
-  - first:
-      213: 5841299252809363159
-    second: RunningAnimationNormalMap_21
-  - first:
-      213: -3101768784388748878
-    second: RunningAnimationNormalMap_22
-  - first:
-      213: -8139969304028042130
-    second: RunningAnimationNormalMap_23
-  - first:
-      213: -5214502171278524264
-    second: RunningAnimationNormalMap_24
-  - first:
-      213: 3638578015629703600
-    second: RunningAnimationNormalMap_25
-  - first:
-      213: -1431702935833989151
-    second: RunningAnimationNormalMap_26
+      213: 8558968561292162693
+    second: PlayerJumpNormalMap_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -180,133 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c167764428462d820800000000000000
-      internalID: 2941524017282512412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_1
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a87395a41670cb20800000000000000
-      internalID: 3152649570208676000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_2
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fdf474578b8f48b0800000000000000
-      internalID: -5165756834216870410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_3
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c8711f03c9153990800000000000000
-      internalID: -7406985686578792253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_4
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2478bc40c05b9e1c0800000000000000
-      internalID: -4473845691591194814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_5
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 500
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c495cdd2fd4d1b1e0800000000000000
-      internalID: -2183730289285768884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_6
+      name: PlayerJumpNormalMap_0
       rect:
         serializedVersion: 2
         x: 0
@@ -320,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d392b320a7d957250800000000000000
-      internalID: 5941828430734240061
+      spriteID: 61cfaa74cf9b8e2c0800000000000000
+      internalID: -4402064142569374698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_7
+      name: PlayerJumpNormalMap_1
       rect:
         serializedVersion: 2
         x: 100
@@ -341,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c6ee59b17e706620800000000000000
-      internalID: 2765349198111893191
+      spriteID: 270c39ddfdd51ad30800000000000000
+      internalID: 4440933923640557682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_8
+      name: PlayerJumpNormalMap_2
       rect:
         serializedVersion: 2
         x: 200
@@ -362,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d077e4a13a14d41d0800000000000000
-      internalID: -3364961177799067891
+      spriteID: cef6d2e6c0b9d98f0800000000000000
+      internalID: -532098703269466132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_9
+      name: PlayerJumpNormalMap_3
       rect:
         serializedVersion: 2
         x: 300
@@ -383,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be3b510ca82ca3840800000000000000
-      internalID: 5204686220563952619
+      spriteID: edc5aea8835618190800000000000000
+      internalID: -7961971372691137314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_10
+      name: PlayerJumpNormalMap_4
       rect:
         serializedVersion: 2
         x: 400
@@ -404,35 +260,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 117c9f7d73e0d53e0800000000000000
-      internalID: -2063477421256358127
+      spriteID: b59bf9ce31cbb7ef0800000000000000
+      internalID: -109286972180154021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_11
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 400
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae758fd85333d4240800000000000000
-      internalID: 4777531084818110442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_12
+      name: PlayerJumpNormalMap_5
       rect:
         serializedVersion: 2
         x: 0
@@ -446,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: addd63590c0237700800000000000000
-      internalID: 536808792096431578
+      spriteID: 8d4300531071d5ec0800000000000000
+      internalID: -3576677235110693672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_13
+      name: PlayerJumpNormalMap_6
       rect:
         serializedVersion: 2
         x: 100
@@ -467,14 +302,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b13aecc60b782f0800000000000000
-      internalID: -970613213305300158
+      spriteID: e0a963ae465c78f30800000000000000
+      internalID: 4577844583462246926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_14
+      name: PlayerJumpNormalMap_7
       rect:
         serializedVersion: 2
         x: 200
@@ -488,14 +323,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 953944b508c732cc0800000000000000
-      internalID: -3737006375058500775
+      spriteID: ff82aaf5532acf870800000000000000
+      internalID: 8718021328804391167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_15
+      name: PlayerJumpNormalMap_8
       rect:
         serializedVersion: 2
         x: 300
@@ -509,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7ee19f47c36ec830800000000000000
-      internalID: 4093318819010965117
+      spriteID: e70e6055fec64a200800000000000000
+      internalID: 190396859435901054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_16
+      name: PlayerJumpNormalMap_9
       rect:
         serializedVersion: 2
         x: 400
@@ -530,35 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a0e017104638bda0800000000000000
-      internalID: -5928929260540469088
+      spriteID: b91a075edcc072710800000000000000
+      internalID: 1668316265421250971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_17
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 300
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91a37dd9f14fc7650800000000000000
-      internalID: 6232124401003215385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_18
+      name: PlayerJumpNormalMap_10
       rect:
         serializedVersion: 2
         x: 0
@@ -572,14 +386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24e26a06fba4795e0800000000000000
-      internalID: -1902970131720032702
+      spriteID: 68c63ba72b907e2e0800000000000000
+      internalID: -2096696439350268794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_19
+      name: PlayerJumpNormalMap_11
       rect:
         serializedVersion: 2
         x: 100
@@ -593,14 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68f112443f22b1850800000000000000
-      internalID: 6348706527924264838
+      spriteID: fdb9af1b009a081b0800000000000000
+      internalID: -5656335311526257697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_20
+      name: PlayerJumpNormalMap_12
       rect:
         serializedVersion: 2
         x: 200
@@ -614,14 +428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7033f1f69fc031710800000000000000
-      internalID: 1662686952880550663
+      spriteID: 317b9ddedc4e7a130800000000000000
+      internalID: 3578080002079045395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_21
+      name: PlayerJumpNormalMap_13
       rect:
         serializedVersion: 2
         x: 300
@@ -635,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dee47ec8b6701150800000000000000
-      internalID: 5841299252809363159
+      spriteID: d2307e5ec92e89a90800000000000000
+      internalID: -7306841231908732115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_22
+      name: PlayerJumpNormalMap_14
       rect:
         serializedVersion: 2
         x: 400
@@ -656,35 +470,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b90d1779bd44f4d0800000000000000
-      internalID: -3101768784388748878
+      spriteID: 37a50bfc64cb334e0800000000000000
+      internalID: -2003050396931564941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_23
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 200
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6c23de9b05090f80800000000000000
-      internalID: -8139969304028042130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningAnimationNormalMap_24
+      name: PlayerJumpNormalMap_15
       rect:
         serializedVersion: 2
         x: 0
@@ -698,14 +491,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 890c07027ed52a7b0800000000000000
-      internalID: -5214502171278524264
+      spriteID: 9676e77a24db92520800000000000000
+      internalID: 2677879547424040809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_25
+      name: PlayerJumpNormalMap_16
       rect:
         serializedVersion: 2
         x: 100
@@ -719,14 +512,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b9772d5d63de7230800000000000000
-      internalID: 3638578015629703600
+      spriteID: 5a812514a79beb260800000000000000
+      internalID: 7115328396025010341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningAnimationNormalMap_26
+      name: PlayerJumpNormalMap_17
       rect:
         serializedVersion: 2
         x: 200
@@ -740,8 +533,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ef2bbde3c1912ce0800000000000000
-      internalID: -1431702935833989151
+      spriteID: 1316c1f483974dc40800000000000000
+      internalID: 5536183124697571633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerJumpNormalMap_18
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f55a6249e616be0800000000000000
+      internalID: -1485784819472965760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerJumpNormalMap_19
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 100
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4557ac0d2d2c58690800000000000000
+      internalID: -7600454585415994028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerJumpNormalMap_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5863e832f8097c670800000000000000
+      internalID: 8558968561292162693
       vertices: []
       indices: 
       edges: []
