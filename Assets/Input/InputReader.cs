@@ -43,7 +43,10 @@ public class InputReader : ScriptableObject, InputController.IPlayerActions
     {
         gameInput.Player.Disable();
     }
-
+    public void OnPoint(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent.Invoke(context.ReadValue<Vector2>());

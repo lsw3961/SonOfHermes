@@ -7,10 +7,10 @@ public class Movement : MonoBehaviour
     //basic and/or global varaibles
     private Rigidbody2D rb;
     public InputReader reader;
-
+    private SpriteRenderer spriteRenderer;
     //move direcions
     private Vector2 dir = Vector2.zero;
-    private Vector2 lastDirection = Vector2.zero;
+    public Vector2 lastDirection = Vector2.zero;
     [SerializeField] private float acceleration = 5;
     [SerializeField] private float maxSpeed = 5;
 
@@ -31,9 +31,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         anim.SetBool("isGrounded", true);
-        anim.SetBool("isMoving", false);
+        anim.SetBool("isRunning", false);
 
     }
 
@@ -83,11 +84,11 @@ public class Movement : MonoBehaviour
         }
         if (lastDirection == Vector2.left)
         {
-            transform.localScale = new Vector2(-1, transform.localScale.y);
+            spriteRenderer.flipX = true;
         }
         else
         {
-            transform.localScale = new Vector2(1, transform.localScale.y);
+            spriteRenderer.flipX = false;
         }
     }
     private void Walk(Vector2 dir)
