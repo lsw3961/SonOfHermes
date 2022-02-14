@@ -110,11 +110,19 @@ public class Movement : MonoBehaviour
         reader.JumpReleaseEvent += JumpReleased;
 
     }
+
+    /// <summary>
+    /// Jump Release will trigger once the player takes their finger off the button. it triggers the low/high jump code
+    /// </summary>
     private void JumpReleased()
     {
         isJumpingReleased = true;
         reader.JumpReleaseEvent -= JumpReleased;
     }
+
+    /// <summary>
+    /// this is the code that is the low/high jump code
+    /// </summary>
     private void FixJump()
     {
         if (isJumping && hangCounter > 0)
@@ -138,6 +146,10 @@ public class Movement : MonoBehaviour
 
 
     }
+
+    /// <summary>
+    /// Check if the player is grounded.
+    /// </summary>
     private void IsGrounded()
     {
         if (Physics2D.OverlapCircle((Vector2)this.transform.position + bottomOffset, overlapRadius, groundedLayer))
@@ -151,6 +163,10 @@ public class Movement : MonoBehaviour
             onGround = false;
         }
     }
+
+    /// <summary>
+    /// cayote time 
+    /// </summary>
     private void HangTime()
     {
         if (onGround)

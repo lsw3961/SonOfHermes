@@ -10,7 +10,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private float dashSpeed = 5f;
     private float dashTime = 0f;
     private bool isDashing = false;
-    Movement movemvent;
+    Movement movement;
     Vector2 lastDirection = Vector2.zero;
     Rigidbody2D rb;
     GameObject dashIndicator;
@@ -24,7 +24,7 @@ public class Dash : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 120;
-        movemvent = GetComponent<Movement>();
+        movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -44,9 +44,10 @@ public class Dash : MonoBehaviour
 
     #endregion
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        lastDirection = movemvent.lastDirection;
+        if (lastDirection != movement.lastDirection) 
+            lastDirection = movement.lastDirection;
         DashAction();
         DashTimeCounter();
         DashIndicator();
@@ -58,46 +59,26 @@ public class Dash : MonoBehaviour
     }
     private void DashAction()
     {
-        if (dashTime <= 0 && isDashing && CheckDash() == 0)
+
+        if (dashTime <= 0 && isDashing)
         {
             if (lastDirection.x == 0)
             {
                 lastDirection.x = 1;
             }
+            Vector3 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
+
             dashTime = dashStartTime;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity += new Vector2((lastDirection.x * dashSpeed), 0);
+            //rb.velocity += new Vector2((ScreenMouse.x * dashSpeed), (ScreenMouse.y * dashSpeed));
+            rb.velocity = Vector2.zero;
+            rb.AddForce(((Vector2)ScreenMouse - (Vector2)transform.position).normalized * dashSpeed,ForceMode2D.Impulse);
             isDashing = false;
         }
-        else if (dashTime <= 0 && isDashing)
-        {
-            if (lastDirection.x == 0)
-            {
-                lastDirection.x = 1;
-            }
-            dashTime = dashStartTime;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity += new Vector2((lastDirection.x * CheckDash()), 0);
-            isDashing = false;
-        }
+
     }
     private void DashTimeCounter()
     {
         dashTime -= Time.deltaTime;
-    }
-    private float CheckDash()
-    {
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection, dashSpeed);
-        if (hit)
-        {
-            return hit.distance;
-        }
-        else
-        {
-            return 0;
-        }
-
     }
 
     private void DashCheck()
@@ -126,9 +107,7 @@ public class Dash : MonoBehaviour
     private void DashIndicatorMove() 
     {
         Vector3 dashTargetFinalPosition = dashTarget.transform.position;
-        Vector2 MousePos = reader.MousePosition;
         Vector3 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
-        Vector3 MouseOffset = ScreenMouse - this.transform.position;
         dashTargetFinalPosition.x = ScreenMouse.x;
         dashTargetFinalPosition.y = ScreenMouse.y;
 
