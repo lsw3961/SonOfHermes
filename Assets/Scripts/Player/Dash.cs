@@ -60,7 +60,7 @@ public class Dash : MonoBehaviour
     private void DashAction()
     {
 
-        if (dashTime <= 0 && isDashing)
+        if ( isDashing)
         {
             if (lastDirection.x == 0)
             {
@@ -68,11 +68,13 @@ public class Dash : MonoBehaviour
             }
             Vector3 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
 
-            dashTime = dashStartTime;
+            //dashTime = dashStartTime;
             //rb.velocity += new Vector2((ScreenMouse.x * dashSpeed), (ScreenMouse.y * dashSpeed));
-            rb.velocity = Vector2.zero;
-            rb.AddForce(((Vector2)ScreenMouse - (Vector2)transform.position).normalized * dashSpeed,ForceMode2D.Impulse);
-            isDashing = false;
+            //rb.velocity = Vector2.zero;
+            //rb.AddForce(((Vector2)ScreenMouse - (Vector2)transform.position).normalized * dashSpeed,ForceMode2D.Impulse);
+            this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
+                isDashing = false;
+            
         }
 
     }
