@@ -16,7 +16,8 @@ public class Dash : MonoBehaviour
     GameObject dashIndicator;
     [SerializeField] GameObject dashTarget;
     [SerializeField] InputReader reader;
-    [SerializeField] float radius = 1;
+    [SerializeField] float indicatorRadius = 1;
+    [SerializeField] float dashRadius = 10;
 
 
 
@@ -68,11 +69,19 @@ public class Dash : MonoBehaviour
             }
             Vector3 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
 
-            //dashTime = dashStartTime;
-            //rb.velocity += new Vector2((ScreenMouse.x * dashSpeed), (ScreenMouse.y * dashSpeed));
-            //rb.velocity = Vector2.zero;
-            //rb.AddForce(((Vector2)ScreenMouse - (Vector2)transform.position).normalized * dashSpeed,ForceMode2D.Impulse);
-            this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
+
+            Vector2 offset = (Vector2)transform.position +((Vector2)ScreenMouse - (Vector2)this.transform.position).normalized * dashRadius;
+            Vector2 betterTransform = this.transform.position;
+            Vector2 betterScreenMouse = ScreenMouse;
+            Debug.Log(Vector2.Distance(betterScreenMouse, betterTransform));
+            Debug.Log(Vector2.Distance(betterTransform, offset));
+            if (Vector2.Distance(betterScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
+            {
+                Debug.Log("inside");
+                this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
+            }
+            else
+                this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
                 isDashing = false;
             
         }
@@ -115,9 +124,17 @@ public class Dash : MonoBehaviour
 
         Vector3 offset = dashTargetFinalPosition - this.transform.position;
         offset.Normalize();
-        offset = offset * radius;
+        offset = offset * indicatorRadius;
         dashTargetFinalPosition = offset;
         dashTarget.transform.localPosition = dashTargetFinalPosition;
 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawWireSphere((Vector2)this.transform.position, dashRadius);
+    }
+
 }
