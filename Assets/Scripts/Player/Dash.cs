@@ -67,17 +67,14 @@ public class Dash : MonoBehaviour
             {
                 lastDirection.x = 1;
             }
-            Vector3 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
-
-
-            Vector2 offset = (Vector2)transform.position +((Vector2)ScreenMouse - (Vector2)this.transform.position).normalized * dashRadius;
+            Vector2 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
             Vector2 betterTransform = this.transform.position;
-            Vector2 betterScreenMouse = ScreenMouse;
-            Debug.Log(Vector2.Distance(betterScreenMouse, betterTransform));
-            Debug.Log(Vector2.Distance(betterTransform, offset));
-            if (Vector2.Distance(betterScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
+
+            Vector2 offset = betterTransform +(ScreenMouse - betterTransform).normalized * dashRadius;
+
+
+            if (Vector2.Distance(ScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
             {
-                Debug.Log("inside");
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
             }
             else
