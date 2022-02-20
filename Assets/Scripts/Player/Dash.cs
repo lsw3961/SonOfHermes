@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class Dash : MonoBehaviour
     [SerializeField] InputReader reader;
     [SerializeField] float indicatorRadius = 1;
     [SerializeField] float dashRadius = 10;
+    [SerializeField] LayerMask nonDashableLayers;
 
 
 
@@ -70,12 +72,13 @@ public class Dash : MonoBehaviour
             Vector2 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
             Vector2 betterTransform = this.transform.position;
 
-            Vector2 offset = betterTransform +(ScreenMouse - betterTransform).normalized * dashRadius;
+            Vector2 offset = betterTransform +(ScreenMouse - betterTransform).normalized * CheckDashRay((ScreenMouse - betterTransform));
 
 
             if (Vector2.Distance(ScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
             {
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
+
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
@@ -84,6 +87,19 @@ public class Dash : MonoBehaviour
         }
 
     }
+
+    private float CheckDashRay(Vector2 screenMouse)
+    {
+        float distance = dashRadius;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, screenMouse,Vector2.Distance(transform.position,screenMouse),nonDashableLayers,0);
+        if (hit) 
+        {
+            Debug.Log("bing bong");
+            distance = hit.distance;
+        }
+        return distance;
+    }
+
     private void DashTimeCounter()
     {
         dashTime -= Time.deltaTime;
