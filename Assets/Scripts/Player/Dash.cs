@@ -22,6 +22,7 @@ public class Dash : MonoBehaviour
     [SerializeField] LayerMask nonDashableLayers;
     [SerializeField] GameManger gameManger;
     TrailRenderer trailRenderer;
+    ParticleSystem particleSystem;
 
 
     bool changeColorBack = false;
@@ -30,6 +31,7 @@ public class Dash : MonoBehaviour
     void Start()
     {
         trailRenderer = GetComponent<TrailRenderer>();
+        particleSystem = GetComponent<ParticleSystem>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -84,8 +86,9 @@ public class Dash : MonoBehaviour
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
             isDashing = false;
-            trailRenderer.startColor = new Color(0, 220, 235, 150);
-            trailRenderer.endColor = new Color(0, 220, 235, 150);
+            trailRenderer.material.color = new Color(0, 220, 235, 150);
+            trailRenderer.material.color = new Color(0, 220, 235, 150);
+            particleSystem.Play();
             StartCoroutine(ColorDash());
             
         }
@@ -150,8 +153,8 @@ public class Dash : MonoBehaviour
     IEnumerator ColorDash()
     {
         yield return new WaitForSeconds(.1f);
-        trailRenderer.startColor = new Color(255, 220, 0, 150);
-        trailRenderer.endColor = new Color(255, 220, 0, 150);
+        trailRenderer.material.color = new Color(255, 220, 0, 150);
+        trailRenderer.material.color = new Color(255, 220, 0, 150);
         changeColorBack = false;
         gameManger.CameraShake();
 
