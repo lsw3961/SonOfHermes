@@ -81,7 +81,11 @@ public class Dash : MonoBehaviour
             if (Vector2.Distance(ScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
             {
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
-
+                if (CheckDashRay((ScreenMouse - betterTransform)) != dashRadius)
+                    gameManger.CameraShake();
+                
+                
+                
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
@@ -156,7 +160,6 @@ public class Dash : MonoBehaviour
         trailRenderer.material.color = new Color(255, 220, 0, 150);
         trailRenderer.material.color = new Color(255, 220, 0, 150);
         changeColorBack = false;
-        gameManger.CameraShake();
 
     }
 
