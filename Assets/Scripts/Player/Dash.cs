@@ -20,13 +20,16 @@ public class Dash : MonoBehaviour
     [SerializeField] float indicatorRadius = 1;
     [SerializeField] float dashRadius = 10;
     [SerializeField] LayerMask nonDashableLayers;
+    [SerializeField] GameManger gameManger;
+    TrailRenderer trailRenderer;
 
 
+    bool changeColorBack = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 120;
+        trailRenderer = GetComponent<TrailRenderer>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -49,8 +52,6 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (lastDirection != movement.lastDirection) 
-            lastDirection = movement.lastDirection;
         DashAction();
         DashTimeCounter();
         DashIndicator();
@@ -82,7 +83,10 @@ public class Dash : MonoBehaviour
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
-                isDashing = false;
+            isDashing = false;
+            trailRenderer.startColor = new Color(0, 220, 235, 150);
+            trailRenderer.endColor = new Color(0, 220, 235, 150);
+            StartCoroutine(ColorDash());
             
         }
 
@@ -143,11 +147,24 @@ public class Dash : MonoBehaviour
 
     }
 
+    IEnumerator ColorDash()
+    {
+        yield return new WaitForSeconds(.1f);
+        trailRenderer.startColor = new Color(255, 220, 0, 150);
+        trailRenderer.endColor = new Color(255, 220, 0, 150);
+        changeColorBack = false;
+        gameManger.CameraShake();
+
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
 
         Gizmos.DrawWireSphere((Vector2)this.transform.position, dashRadius);
     }
+
+
 
 }
