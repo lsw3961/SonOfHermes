@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -756,7 +756,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 978942612559604503, guid: 27e5496c04f977d4fa7d4132a3360c67, type: 3}
-  m_Color: {r: 0.8862745, g: 0.24567804, b: 0.20392156, a: 1}
+  m_Color: {r: 0, g: 0.39195395, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -843,17 +843,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reader: {fileID: 11400000, guid: 1e97c097b1df2444dad48ec12292af71, type: 2}
   lastDirection: {x: 0, y: 0}
-  acceleration: 1
-  maxSpeed: 12
-  jumpForce: 10
-  fallMultiplier: 5
-  lowJumpMultiplier: 2.5
-  hangTime: 0.2
-  bottomOffset: {x: 0, y: -0.64}
+  bottomOffset: {x: 0, y: -0.71}
   overlapRadius: 0.12
   groundedLayer:
     serializedVersion: 2
     m_Bits: 256
+  player: {fileID: 11400000, guid: 60f22c01d34889e4b8acabef9c641db7, type: 2}
 --- !u!50 &527470154
 Rigidbody2D:
   serializedVersion: 4
@@ -940,7 +935,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
@@ -980,18 +975,18 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.86201715, b: 0, a: 0.654902}
-      key1: {r: 1, g: 0.86201715, b: 0, a: 0.5176471}
-      key2: {r: 0, g: 0, b: 0, a: 1}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 0.23288822, b: 1, a: 1}
+      key3: {r: 0, g: 0.23288822, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
-      ctime3: 0
+      ctime2: 57632
+      ctime3: 57632
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -1038,6 +1033,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gameManger: {fileID: 1044980554}
+  playerLight: {fileID: 1403271299}
+  player: {fileID: 11400000, guid: 60f22c01d34889e4b8acabef9c641db7, type: 2}
 --- !u!199 &527470158
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6207,7 +6204,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: fb385604e95297145a9f1d861fc73f23, type: 3}
   m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_FlipX: 0
@@ -6597,7 +6594,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.77
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}

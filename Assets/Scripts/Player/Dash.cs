@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//using UnityEngine.Experimental.Rendering.LWRP;   
+using UnityEngine.Experimental.Rendering.Universal; 
 public class Dash : MonoBehaviour
 {
 
@@ -21,19 +22,31 @@ public class Dash : MonoBehaviour
     [SerializeField] float dashRadius = 10;
     [SerializeField] LayerMask nonDashableLayers;
     [SerializeField] GameManger gameManger;
-    TrailRenderer trailRenderer;
-    ParticleSystem particleSystem;
+    [SerializeField] Light2D playerLight;
+    private TrailRenderer trailRenderer;
+    private ParticleSystem dashParticleSystem;
 
+    [SerializeField] Player player;
+
+
+
+    private int dashAmount = 1;
 
     bool changeColorBack = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        SetDefaultValues();
         trailRenderer = GetComponent<TrailRenderer>();
-        particleSystem = GetComponent<ParticleSystem>();
+        dashParticleSystem = GetComponent<ParticleSystem>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void SetDefaultValues()
+    {
+        dashAmount = player.airDashLimit;
     }
 
 
@@ -54,20 +67,44 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        DashAction();
-        DashTimeCounter();
-        DashIndicator();
+        if (player.hasDash) 
+        {
+            DashAction();
+            DashTimeCounter();
+            DashIndicator();
+            if (player.isGrounded) 
+            {
+                dashAmount = player.airDashLimit;
+            }
+        }
+
     }
 
     private void DashTrigger()
     {
-        isDashing = true;
+        if (dashTime <= 0)
+        {
+            isDashing = true;
+        }
+        else
+            isDashing = false;
+
     }
     private void DashAction()
     {
 
         if ( isDashing)
         {
+            if (!player.isGrounded && !player.hasJumpDash) 
+            {
+                isDashing = false;
+                return;
+            }
+            if (dashAmount <= 0) 
+            {
+                isDashing = false;
+                return;
+            }
             if (lastDirection.x == 0)
             {
                 lastDirection.x = 1;
@@ -89,16 +126,29 @@ public class Dash : MonoBehaviour
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
+            ChangeEffects();
             isDashing = false;
-            trailRenderer.material.color = new Color(0, 220, 235, 150);
-            trailRenderer.material.color = new Color(0, 220, 235, 150);
-            particleSystem.Play();
+            dashTime = player.dashTimeLimit;
+            dashAmount--;
+            dashParticleSystem.Play();
             StartCoroutine(ColorDash());
-            
         }
 
     }
 
+    private void ChangeEffects()
+    {
+        trailRenderer.startColor = new Color(0, 220, 235, 150);
+        trailRenderer.endColor = new Color(0, 220, 235, 150);
+
+        playerLight.pointLightOuterRadius *= 3;
+        playerLight.pointLightInnerRadius *= 3;
+    }
+
+    private void JumpingDash() 
+    {
+    
+    }
     private float CheckDashRay(Vector2 screenMouse)
     {
         float distance = dashRadius;
@@ -156,9 +206,11 @@ public class Dash : MonoBehaviour
 
     IEnumerator ColorDash()
     {
-        yield return new WaitForSeconds(.1f);
-        trailRenderer.material.color = new Color(255, 220, 0, 150);
-        trailRenderer.material.color = new Color(255, 220, 0, 150);
+        yield return new WaitForSeconds(.2f);
+        trailRenderer.startColor = new Color(255, 220, 0, 150);
+        trailRenderer.endColor = new Color(255, 220, 0, 150);
+        playerLight.pointLightOuterRadius /= 3;
+        playerLight.pointLightInnerRadius /= 3;
         changeColorBack = false;
 
     }

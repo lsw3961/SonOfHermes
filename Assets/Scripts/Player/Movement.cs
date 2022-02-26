@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,34 +9,53 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     public InputReader reader;
     private SpriteRenderer spriteRenderer;
-    //move direcions
-    private Vector2 dir = Vector2.zero;
-    public Vector2 lastDirection = Vector2.zero;
-    [SerializeField] private float acceleration = 5;
-    [SerializeField] private float maxSpeed = 5;
 
-    //jump variables
-    [SerializeField] private float jumpForce = 5;
-    [SerializeField] private float fallMultiplier = 5;
-    [SerializeField] private float lowJumpMultiplier = 5;
-    [SerializeField] private float hangTime = .2f;
+    //Varibales needed for running
+    public Vector2 lastDirection = Vector2.zero;
+    private Vector2 dir = Vector2.zero;
+    private float acceleration = 5;
+    private float maxSpeed = 5;
+
+    //Variables needed for Jumping
+    private float jumpForce = 5;
+    private float fallMultiplier = 5;
+    private float lowJumpMultiplier = 5;
+    private float hangTime = .2f;
     private float hangCounter = 0;
     private bool isJumping = false;
     private bool isJumpingReleased = true;
     private bool onGround = true;
+
+    //collision check varaibles
     [SerializeField] private Vector2 bottomOffset = Vector2.zero;
     [SerializeField] private float overlapRadius = 2;
     [SerializeField] private LayerMask groundedLayer = 0;
 
+    //player information from scriptable object
+    [SerializeField]Player player;
+
+    //animator needed for animations
     private Animator anim;
     void Start()
     {
+        SetDefaultValues();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         anim.SetBool("isGrounded", true);
         anim.SetBool("isRunning", false);
 
+    }
+
+    private void SetDefaultValues()
+    {
+        acceleration = player.acceleration;
+        maxSpeed = player.maxSpeed;
+
+        jumpForce = player.jumpForce;
+        fallMultiplier = player.fallMultiplier;
+        lowJumpMultiplier = player.lowJumpMultiplier;
+        hangTime = player.hangTime;
     }
 
     #region Enable & Disable
@@ -125,7 +145,7 @@ public class Movement : MonoBehaviour
     /// </summary>
     private void FixJump()
     {
-        if (isJumping && hangCounter > 0)
+        if (isJumping && hangCounter > 0 && !(rb.velocity.y>0))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
             rb.velocity += Vector2.up * jumpForce;
@@ -162,6 +182,7 @@ public class Movement : MonoBehaviour
         {
             onGround = false;
         }
+        player.isGrounded = onGround;
     }
 
     /// <summary>
