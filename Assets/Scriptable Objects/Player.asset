@@ -20,6 +20,12 @@ MonoBehaviour:
   hangTime: 0.2
   airDashLimit: 1
   dashTimeLimit: 0.3
+  dashSpeed: 10
+  indicatorRadius: 1
+  dashRadius: 5
+  NonDashAbleLayers:
+    serializedVersion: 2
+    m_Bits: 256
   isGrounded: 1
   hasDash: 1
   hasJumpDash: 1

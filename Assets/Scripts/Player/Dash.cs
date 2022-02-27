@@ -8,32 +8,25 @@ public class Dash : MonoBehaviour
 {
 
     //dash variables
-    [SerializeField] private float dashStartTime = 2f;
-    [SerializeField] private float dashSpeed = 5f;
+    private float dashSpeed = 5f;
     private float dashTime = 0f;
     private bool isDashing = false;
+    float indicatorRadius = 1;
+    float dashRadius = 10;
+    LayerMask nonDashableLayers;
+
     Movement movement;
-    Vector2 lastDirection = Vector2.zero;
     Rigidbody2D rb;
-    GameObject dashIndicator;
     [SerializeField] GameObject dashTarget;
     [SerializeField] InputReader reader;
-    [SerializeField] float indicatorRadius = 1;
-    [SerializeField] float dashRadius = 10;
-    [SerializeField] LayerMask nonDashableLayers;
     [SerializeField] GameManger gameManger;
     [SerializeField] Light2D playerLight;
+    [SerializeField] Player player;
     private TrailRenderer trailRenderer;
     private ParticleSystem dashParticleSystem;
 
-    [SerializeField] Player player;
-
-
 
     private int dashAmount = 1;
-
-    bool changeColorBack = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +40,10 @@ public class Dash : MonoBehaviour
     private void SetDefaultValues()
     {
         dashAmount = player.airDashLimit;
+        dashSpeed = player.dashSpeed;
+        indicatorRadius = player.indicatorRadius;
+        dashRadius = player.dashRadius;
+        nonDashableLayers = player.NonDashAbleLayers;
     }
 
 
@@ -105,10 +102,6 @@ public class Dash : MonoBehaviour
                 isDashing = false;
                 return;
             }
-            if (lastDirection.x == 0)
-            {
-                lastDirection.x = 1;
-            }
             Vector2 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
             Vector2 betterTransform = this.transform.position;
 
@@ -120,20 +113,18 @@ public class Dash : MonoBehaviour
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
                 if (CheckDashRay((ScreenMouse - betterTransform)) != dashRadius)
                     gameManger.CameraShake();
-                
-                
-                
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
-            ChangeEffects();
+
             isDashing = false;
             dashTime = player.dashTimeLimit;
             dashAmount--;
+
             dashParticleSystem.Play();
+            ChangeEffects();
             StartCoroutine(ColorDash());
         }
-
     }
 
     private void ChangeEffects()
@@ -164,18 +155,6 @@ public class Dash : MonoBehaviour
     private void DashTimeCounter()
     {
         dashTime -= Time.deltaTime;
-    }
-
-    private void DashCheck()
-    {
-        if (dashTime <= 0)
-        {
-            dashIndicator.SetActive(true);
-        }
-        else
-        {
-            dashIndicator.SetActive(false);
-        }
     }
 
     private void DashIndicator() 
@@ -211,8 +190,6 @@ public class Dash : MonoBehaviour
         trailRenderer.endColor = new Color(255, 220, 0, 150);
         playerLight.pointLightOuterRadius /= 3;
         playerLight.pointLightInnerRadius /= 3;
-        changeColorBack = false;
-
     }
 
 

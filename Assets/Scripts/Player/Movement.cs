@@ -77,7 +77,10 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Walk(dir);
+        if (player.isRunning)
+        {
+            Walk(dir);
+        }
         HangTime();
         IsGrounded();
         FixJump();
@@ -94,12 +97,17 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             anim.SetBool("isRunning", false);
+            player.isRunning = false;
             return;
         }
-        anim.SetBool("isRunning", true);
+        {
+            anim.SetBool("isRunning", true);
+            player.isRunning = true;
+        }
         if (dir != Vector2.zero)
         {
             lastDirection = dir;
+            player.isRunning = true;
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         if (lastDirection == Vector2.left)
@@ -126,6 +134,7 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         isJumping = true;
+        player.isJumping = true;
         isJumpingReleased = false;
         reader.JumpReleaseEvent += JumpReleased;
 
@@ -151,7 +160,6 @@ public class Movement : MonoBehaviour
             rb.velocity += Vector2.up * jumpForce;
             anim.SetBool("isGrounded", false);
             anim.SetTrigger("Jumping");
-
         }
         if (rb.velocity.y < 0)
         {
@@ -177,12 +185,15 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             onGround = true;
             anim.SetBool("isGrounded",true);
+
         }
         else
         {
             onGround = false;
         }
         player.isGrounded = onGround;
+        player.isJumping = !onGround;
+
     }
 
     /// <summary>

@@ -7,7 +7,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Camera cam;
     [SerializeField] Vector2 camOffset = new Vector2(20,20);
-    [SerializeField] float yOffset = 15;
 
     private void FixedUpdate()
     {

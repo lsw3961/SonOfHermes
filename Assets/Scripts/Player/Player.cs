@@ -9,6 +9,7 @@ public class Player : ScriptableObject
 //Set Variables-------------------------
     //Movement
         //movement variables
+        [Header("Movement")]
         [SerializeField] public float acceleration = 5;
         [SerializeField] public float maxSpeed = 5;
         //jump variables
@@ -16,15 +17,29 @@ public class Player : ScriptableObject
         [SerializeField] public float fallMultiplier = 5;
         [SerializeField] public float lowJumpMultiplier = 5;
         [SerializeField] public float hangTime = .2f;
+    //-----------------------------------------
+
     //Dashing
+    [Header("Dashing")]
         [SerializeField] public int airDashLimit = 1;
         [SerializeField] public float dashTimeLimit = .3f;
+        [SerializeField] public float dashSpeed = .3f;
+        [SerializeField] public float indicatorRadius = 1.0f;
+        [SerializeField] public float dashRadius = 10.0f;
+        [SerializeField] public LayerMask NonDashAbleLayers;
     //-----------------------------------------
 
     //Retrieved Variables--------------------------
-    [SerializeField] public bool isGrounded;
+    [Header("Player States")]
+        public bool isRunning = false;
+        public bool isJumping = false;
+        public bool isDashing = false;
+    
+    [Header("General")]
+        [SerializeField] public bool isGrounded;
     //---------------------------------------------
 
+    [Header("Abilities")]
     //Get Variables-------------------------------
     public bool hasDash = false;
     public bool hasJumpDash = false;
