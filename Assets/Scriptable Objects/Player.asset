@@ -26,6 +26,9 @@ MonoBehaviour:
   NonDashAbleLayers:
     serializedVersion: 2
     m_Bits: 256
+  isRunning: 0
+  isJumping: 0
+  isDashing: 0
   isGrounded: 1
   hasDash: 1
   hasJumpDash: 1

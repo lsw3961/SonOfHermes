@@ -82,6 +82,7 @@ public class Dash : MonoBehaviour
         if (dashTime <= 0)
         {
             isDashing = true;
+            player.isDashing = true;
         }
         else
             isDashing = false;
@@ -190,6 +191,7 @@ public class Dash : MonoBehaviour
         trailRenderer.endColor = new Color(255, 220, 0, 150);
         playerLight.pointLightOuterRadius /= 3;
         playerLight.pointLightInnerRadius /= 3;
+        player.isDashing = false;
     }
 
 

@@ -134,7 +134,6 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         isJumping = true;
-        player.isJumping = true;
         isJumpingReleased = false;
         reader.JumpReleaseEvent += JumpReleased;
 
@@ -160,6 +159,7 @@ public class Movement : MonoBehaviour
             rb.velocity += Vector2.up * jumpForce;
             anim.SetBool("isGrounded", false);
             anim.SetTrigger("Jumping");
+            player.isJumping = true;
         }
         if (rb.velocity.y < 0)
         {
@@ -185,15 +185,13 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             onGround = true;
             anim.SetBool("isGrounded",true);
-
+            player.isJumping = false;
         }
         else
         {
             onGround = false;
         }
         player.isGrounded = onGround;
-        player.isJumping = !onGround;
-
     }
 
     /// <summary>

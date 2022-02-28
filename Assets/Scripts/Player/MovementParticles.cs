@@ -22,7 +22,16 @@ public class MovementParticles : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if (player.isDashing) 
+        {
+            particles.Stop();
+            return;
+        }
+        if (player.isGrounded && !firstTimeJump)
+        {
+            firstTimeJump = true;
+            particles.Play();
+        }
         if (player.isRunning && !player.isJumping)
         {
             RunParticles();
@@ -36,11 +45,7 @@ public class MovementParticles : MonoBehaviour
         {
             firstTimeRun = true;
         }
-        if (player.isGrounded && firstTimeJump != true) 
-        {
-            firstTimeJump = true;
-            CreateDust();
-        }
+
     }
     void RunParticles() 
     {
