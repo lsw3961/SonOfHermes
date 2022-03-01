@@ -24,6 +24,7 @@ public class Dash : MonoBehaviour
     [SerializeField] Player player;
     private TrailRenderer trailRenderer;
     private ParticleSystem dashParticleSystem;
+    private DashPowers powers;
 
 
     private int dashAmount = 1;
@@ -35,6 +36,7 @@ public class Dash : MonoBehaviour
         dashParticleSystem = GetComponent<ParticleSystem>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
+        powers = GetComponent<DashPowers>();
     }
 
     private void SetDefaultValues()
@@ -111,12 +113,12 @@ public class Dash : MonoBehaviour
 
             if (Vector2.Distance(ScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
             {
-                this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)offset, dashSpeed);
+                this.transform.position = Vector2.MoveTowards(transform.position,offset, dashSpeed);
                 if (CheckDashRay((ScreenMouse - betterTransform)) != dashRadius)
                     gameManger.CameraShake();
             }
             else
-                this.transform.position = Vector2.MoveTowards(transform.position, (Vector2)ScreenMouse, dashSpeed);
+                this.transform.position = Vector2.MoveTowards(transform.position,ScreenMouse, dashSpeed);
 
             isDashing = false;
             dashTime = player.dashTimeLimit;
@@ -125,6 +127,33 @@ public class Dash : MonoBehaviour
             dashParticleSystem.Play();
             ChangeEffects();
             StartCoroutine(ColorDash());
+        }
+    }
+
+    private void DashPowersCheck(Vector2 oldPosition, Vector2 newPosition)
+    {
+        //called with new and old position
+        if (player.hasDashAttack) 
+        {
+            powers.DashAttack(oldPosition,newPosition);
+        }
+        //called with new and old position
+        if (player.hasGroundPound) 
+        {
+            powers.DashGroundPound(oldPosition, newPosition);
+        }
+        //goes in start
+        if (player.hasPhaseDash) 
+        {
+            powers.PhaseDash();
+        }
+        if (player.hasDashBounce) 
+        {
+            powers.DashBounce(oldPosition, newPosition);
+        }
+        if (player.hasDashBlast) 
+        {
+            powers.DashBlast(oldPosition,newPosition);
         }
     }
 

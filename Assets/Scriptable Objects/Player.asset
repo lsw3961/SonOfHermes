@@ -25,7 +25,7 @@ MonoBehaviour:
   dashRadius: 5
   NonDashAbleLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1792
   isRunning: 0
   isJumping: 0
   isDashing: 0
