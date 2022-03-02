@@ -123,7 +123,7 @@ public class Dash : MonoBehaviour
             isDashing = false;
             dashTime = player.dashTimeLimit;
             dashAmount--;
-
+            DashPowersCheck(betterTransform,this.transform.position);
             dashParticleSystem.Play();
             ChangeEffects();
             StartCoroutine(ColorDash());
@@ -132,29 +132,29 @@ public class Dash : MonoBehaviour
 
     private void DashPowersCheck(Vector2 oldPosition, Vector2 newPosition)
     {
-        //called with new and old position
-        if (player.hasDashAttack) 
-        {
-            powers.DashAttack(oldPosition,newPosition);
-        }
+        ////called with new and old position
+        //if (player.hasDashAttack) 
+        //{
+        //    powers.DashAttack(oldPosition,newPosition);
+        //}
         //called with new and old position
         if (player.hasGroundPound) 
         {
             powers.DashGroundPound(oldPosition, newPosition);
         }
         //goes in start
-        if (player.hasPhaseDash) 
-        {
-            powers.PhaseDash();
-        }
-        if (player.hasDashBounce) 
-        {
-            powers.DashBounce(oldPosition, newPosition);
-        }
-        if (player.hasDashBlast) 
-        {
-            powers.DashBlast(oldPosition,newPosition);
-        }
+        //if (player.hasPhaseDash) 
+        //{
+        //    powers.PhaseDash();
+        //}
+        //if (player.hasDashBounce) 
+        //{
+        //    powers.DashBounce(oldPosition, newPosition);
+        //}
+        //if (player.hasDashBlast) 
+        //{
+        //    powers.DashBlast(oldPosition,newPosition);
+        //}
     }
 
     private void ChangeEffects()
@@ -228,7 +228,7 @@ public class Dash : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        Gizmos.DrawWireSphere((Vector2)this.transform.position, dashRadius);
+        Gizmos.DrawWireSphere((Vector2)this.transform.position, player.dashRadius);
     }
 
 

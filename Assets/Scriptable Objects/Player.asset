@@ -26,6 +26,11 @@ MonoBehaviour:
   NonDashAbleLayers:
     serializedVersion: 2
     m_Bits: 1792
+  groundPoundOffset: {x: -0.86, y: -0.69}
+  groundPoundRadius: 0.72
+  groundPoundLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   isRunning: 0
   isJumping: 0
   isDashing: 0
@@ -33,7 +38,7 @@ MonoBehaviour:
   hasDash: 1
   hasJumpDash: 1
   hasDashAttack: 0
-  hasGroundPound: 0
+  hasGroundPound: 1
   hasPhaseDash: 0
   hasDashBlast: 0
   hasDashBounce: 0

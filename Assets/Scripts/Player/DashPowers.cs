@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class DashPowers : MonoBehaviour
 {
-
+    [SerializeField] Player player;
+    Collider2D[] results;
+    [SerializeField] string enemyTag = "Enemy";
     //if the user strikes the ground they launch a force outward that damages and knocks back foes
-    public bool DashGroundPound(Vector2 oldPosition, Vector2 newPosition) 
+    public void DashGroundPound(Vector2 oldPosition, Vector2 newPosition) 
     {
         //check if the oldposition y is greater then the new position y
         //if it is return
+        if (oldPosition.y < newPosition.y) 
+            return;
+
         //otherwise
-        
+
         //create two rayspheres on the left and right of the player.
         //if we hit anything
-            //check that the thing has a rigidbody.
-            //if it does apply a force in the opposite direction to the player
-        
+        //check that the thing has a rigidbody.
+        //if it does apply a force in the opposite direction to the player
+        //left side ray
+        results = Physics2D.OverlapCircleAll((Vector2)this.transform.position + new Vector2(player.groundPoundOffset.x * -1, player.groundPoundOffset.y), player.groundPoundRadius, player.groundPoundLayer);
+        for (int i = 0; i < results.Length; i++)
+        {
+                Debug.Log("Enemy Hit right");
+        }
+        results = Physics2D.OverlapCircleAll((Vector2)this.transform.position + new Vector2(player.groundPoundOffset.x, player.groundPoundOffset.y), player.groundPoundRadius, player.groundPoundLayer);
+        for (int i = 0; i < results.Length; i++)
+        {
+                Debug.Log("Enemy Hit left");
 
-        return false;
+        }
+
+
 
     }
 
@@ -63,5 +79,12 @@ public class DashPowers : MonoBehaviour
         //if something hits
             //call that objects hit function
             //will trigger either damage or destruction
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawWireSphere((Vector2)this.transform.position + new Vector2(player.groundPoundOffset.x*-1,player.groundPoundOffset.y), player.groundPoundRadius);
+        Gizmos.DrawWireSphere((Vector2)this.transform.position + player.groundPoundOffset, player.groundPoundRadius);
     }
 }

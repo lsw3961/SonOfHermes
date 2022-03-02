@@ -26,7 +26,12 @@ public class Player : ScriptableObject
         [SerializeField] public float dashSpeed = .3f;
         [SerializeField] public float indicatorRadius = 1.0f;
         [SerializeField] public float dashRadius = 10.0f;
-        [SerializeField] public LayerMask NonDashAbleLayers;
+        [SerializeField] public LayerMask NonDashAbleLayers = 0;
+    [Header("Dashing Power Variables")]
+    [SerializeField] public Vector2 groundPoundOffset;
+    [SerializeField] public float groundPoundRadius;
+    [SerializeField] public LayerMask groundPoundLayer = 0;
+
     //-----------------------------------------
 
     //Retrieved Variables--------------------------
