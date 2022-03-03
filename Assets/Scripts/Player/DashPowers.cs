@@ -7,6 +7,10 @@ public class DashPowers : MonoBehaviour
     [SerializeField] Player player;
     Collider2D[] results;
     [SerializeField] string enemyTag = "Enemy";
+    [SerializeField] ParticleSystem leftParticleSystem;
+    [SerializeField] ParticleSystem rightParticleSystem;
+    [SerializeField] float knockbackDuration = .2f;
+    
     //if the user strikes the ground they launch a force outward that damages and knocks back foes
     public void DashGroundPound(Vector2 oldPosition, Vector2 newPosition) 
     {
@@ -26,14 +30,23 @@ public class DashPowers : MonoBehaviour
         for (int i = 0; i < results.Length; i++)
         {
                 Debug.Log("Enemy Hit right");
+            GameObject enemy = results[i].gameObject;
+            enemy.GetComponent<Rigidbody2D>().isKinematic = false;
+            Vector2 difference = (Vector2)enemy.transform.position - newPosition;
+            difference = difference.normalized * player.groundPoundForce;
+            enemy.GetComponent<Rigidbody2D>().AddForce(difference, ForceMode2D.Impulse);
         }
         results = Physics2D.OverlapCircleAll((Vector2)this.transform.position + new Vector2(player.groundPoundOffset.x, player.groundPoundOffset.y), player.groundPoundRadius, player.groundPoundLayer);
         for (int i = 0; i < results.Length; i++)
         {
                 Debug.Log("Enemy Hit left");
-
+            GameObject enemy = results[i].gameObject;
+            Vector2 difference = (Vector2)enemy.transform.position - newPosition;
+            difference = difference.normalized * player.groundPoundForce;
+            enemy.GetComponent<Rigidbody2D>().AddForce(difference,ForceMode2D.Impulse);
         }
-
+        leftParticleSystem.Play();
+        rightParticleSystem.Play();
 
 
     }

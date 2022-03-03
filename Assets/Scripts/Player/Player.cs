@@ -31,6 +31,7 @@ public class Player : ScriptableObject
     [SerializeField] public Vector2 groundPoundOffset;
     [SerializeField] public float groundPoundRadius;
     [SerializeField] public LayerMask groundPoundLayer = 0;
+    [SerializeField] public float groundPoundForce = 3;
 
     //-----------------------------------------
 

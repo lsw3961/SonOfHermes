@@ -115,7 +115,14 @@ public class Dash : MonoBehaviour
             {
                 this.transform.position = Vector2.MoveTowards(transform.position,offset, dashSpeed);
                 if (CheckDashRay((ScreenMouse - betterTransform)) != dashRadius)
+                {
                     gameManger.CameraShake();
+                    if (player.hasGroundPound)
+                    {
+                        powers.DashGroundPound(betterTransform, this.transform.position);
+                    }
+                }
+
             }
             else
                 this.transform.position = Vector2.MoveTowards(transform.position,ScreenMouse, dashSpeed);
@@ -123,8 +130,7 @@ public class Dash : MonoBehaviour
             isDashing = false;
             dashTime = player.dashTimeLimit;
             dashAmount--;
-            DashPowersCheck(betterTransform,this.transform.position);
-            dashParticleSystem.Play();
+            dashParticleSystem.Play(false);
             ChangeEffects();
             StartCoroutine(ColorDash());
         }
@@ -138,10 +144,7 @@ public class Dash : MonoBehaviour
         //    powers.DashAttack(oldPosition,newPosition);
         //}
         //called with new and old position
-        if (player.hasGroundPound) 
-        {
-            powers.DashGroundPound(oldPosition, newPosition);
-        }
+
         //goes in start
         //if (player.hasPhaseDash) 
         //{

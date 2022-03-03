@@ -31,6 +31,7 @@ MonoBehaviour:
   groundPoundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  groundPoundForce: 8
   isRunning: 0
   isJumping: 0
   isDashing: 0
