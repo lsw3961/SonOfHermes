@@ -135,6 +135,7 @@ public class Movement : MonoBehaviour
     {
         isJumping = true;
         isJumpingReleased = false;
+        anim.SetBool("isSpaceBar", true);
         reader.JumpReleaseEvent += JumpReleased;
 
     }
@@ -145,6 +146,7 @@ public class Movement : MonoBehaviour
     private void JumpReleased()
     {
         isJumpingReleased = true;
+        anim.SetBool("isSpaceBar",false);
         reader.JumpReleaseEvent -= JumpReleased;
     }
 

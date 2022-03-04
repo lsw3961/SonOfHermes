@@ -22,6 +22,8 @@ public class Dash : MonoBehaviour
     [SerializeField] GameManger gameManger;
     [SerializeField] Light2D playerLight;
     [SerializeField] Player player;
+    [SerializeField] Animator anim;
+    [SerializeField] SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
     private ParticleSystem dashParticleSystem;
     private DashPowers powers;
@@ -33,6 +35,8 @@ public class Dash : MonoBehaviour
     {
         SetDefaultValues();
         trailRenderer = GetComponent<TrailRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         dashParticleSystem = GetComponent<ParticleSystem>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
@@ -105,6 +109,8 @@ public class Dash : MonoBehaviour
                 isDashing = false;
                 return;
             }
+
+
             Vector2 ScreenMouse = Camera.main.ScreenToWorldPoint(reader.MousePosition);
             Vector2 betterTransform = this.transform.position;
 
@@ -127,6 +133,8 @@ public class Dash : MonoBehaviour
             else
                 this.transform.position = Vector2.MoveTowards(transform.position,ScreenMouse, dashSpeed);
 
+            SpriteRendererCheck(betterTransform,this.transform.position);
+            anim.SetTrigger("dashAttack");
             isDashing = false;
             dashTime = player.dashTimeLimit;
             dashAmount--;
@@ -234,6 +242,16 @@ public class Dash : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)this.transform.position, player.dashRadius);
     }
 
-
+    private void SpriteRendererCheck(Vector2 oldPosition, Vector2 newPosition) 
+    {
+        if (oldPosition.x < newPosition.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
 
 }

@@ -1199,6 +1199,8 @@ MonoBehaviour:
   gameManger: {fileID: 1044980554}
   playerLight: {fileID: 1403271299}
   player: {fileID: 11400000, guid: 60f22c01d34889e4b8acabef9c641db7, type: 2}
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!199 &527470158
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -11847,7 +11849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1475223246
 Transform:
   m_ObjectHideFlags: 0
@@ -16792,7 +16794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1925626093
 Transform:
   m_ObjectHideFlags: 0
