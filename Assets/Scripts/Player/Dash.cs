@@ -25,9 +25,8 @@ public class Dash : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
-    private ParticleSystem dashParticleSystem;
+    [SerializeField] private ParticleSystem dashParticleSystem;
     private DashPowers powers;
-
 
     private int dashAmount = 1;
     // Start is called before the first frame update
@@ -37,10 +36,10 @@ public class Dash : MonoBehaviour
         trailRenderer = GetComponent<TrailRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        dashParticleSystem = GetComponent<ParticleSystem>();
         movement = GetComponent<Movement>();
         rb = GetComponent<Rigidbody2D>();
         powers = GetComponent<DashPowers>();
+
     }
 
     private void SetDefaultValues()
@@ -117,6 +116,7 @@ public class Dash : MonoBehaviour
             Vector2 offset = betterTransform +(ScreenMouse - betterTransform).normalized * CheckDashRay((ScreenMouse - betterTransform));
 
 
+
             if (Vector2.Distance(ScreenMouse,betterTransform ) > Vector2.Distance(betterTransform, offset))
             {
                 this.transform.position = Vector2.MoveTowards(transform.position,offset, dashSpeed);
@@ -133,12 +133,12 @@ public class Dash : MonoBehaviour
             else
                 this.transform.position = Vector2.MoveTowards(transform.position,ScreenMouse, dashSpeed);
 
+            dashParticleSystem.Play(false);
             SpriteRendererCheck(betterTransform,this.transform.position);
             anim.SetTrigger("dashAttack");
             isDashing = false;
             dashTime = player.dashTimeLimit;
             dashAmount--;
-            dashParticleSystem.Play(false);
             ChangeEffects();
             StartCoroutine(ColorDash());
         }
@@ -231,6 +231,7 @@ public class Dash : MonoBehaviour
         trailRenderer.endColor = new Color(255, 220, 0, 150);
         playerLight.pointLightOuterRadius /= 3;
         playerLight.pointLightInnerRadius /= 3;
+
         player.isDashing = false;
     }
 
