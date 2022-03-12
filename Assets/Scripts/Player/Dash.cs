@@ -133,6 +133,7 @@ public class Dash : MonoBehaviour
             else
                 this.transform.position = Vector2.MoveTowards(transform.position,ScreenMouse, dashSpeed);
 
+            DashPowersCheck(betterTransform,this.transform.position);
             dashParticleSystem.Play(false);
             SpriteRendererCheck(betterTransform,this.transform.position);
             anim.SetTrigger("dashAttack");
@@ -147,10 +148,10 @@ public class Dash : MonoBehaviour
     private void DashPowersCheck(Vector2 oldPosition, Vector2 newPosition)
     {
         ////called with new and old position
-        //if (player.hasDashAttack) 
-        //{
-        //    powers.DashAttack(oldPosition,newPosition);
-        //}
+        if (player.hasDashAttack) 
+        {
+            powers.DashAttack(oldPosition,newPosition);
+        }
         //called with new and old position
 
         //goes in start

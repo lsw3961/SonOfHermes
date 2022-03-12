@@ -32,6 +32,7 @@ public class Player : ScriptableObject
     [SerializeField] public float groundPoundRadius;
     [SerializeField] public LayerMask groundPoundLayer = 0;
     [SerializeField] public float groundPoundForce = 3;
+    [SerializeField] public string[] HitableEnemieTags;
 
     //-----------------------------------------
 

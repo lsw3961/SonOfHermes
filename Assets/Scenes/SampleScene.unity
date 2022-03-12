@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reader: {fileID: 11400000, guid: 1e97c097b1df2444dad48ec12292af71, type: 2}
   lastDirection: {x: 0, y: 0}
-  bottomOffset: {x: 0, y: -0.71}
+  bottomOffset: {x: 0, y: -0.62}
   overlapRadius: 0.12
   groundedLayer:
     serializedVersion: 2
@@ -5991,9 +5991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 60f22c01d34889e4b8acabef9c641db7, type: 2}
-  enemyTag: Enemy
-  leftParticleSystem: {fileID: 1925626094}
-  rightParticleSystem: {fileID: 1475223247}
+  attackableTags: []
   knockbackDuration: 0.2
 --- !u!1 &592073797
 GameObject:
@@ -11174,7 +11172,7 @@ GameObject:
   - component: {fileID: 759665963}
   m_Layer: 12
   m_Name: Enenmy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16452,7 +16450,7 @@ GameObject:
   - component: {fileID: 1209413412}
   m_Layer: 12
   m_Name: Enenmy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,9 +6,7 @@ public class DashPowers : MonoBehaviour
 {
     [SerializeField] Player player;
     Collider2D[] results;
-    [SerializeField] string enemyTag = "Enemy";
-    [SerializeField] ParticleSystem leftParticleSystem;
-    [SerializeField] ParticleSystem rightParticleSystem;
+    [SerializeField] string[] attackableTags;
     [SerializeField] float knockbackDuration = .2f;
     
     //if the user strikes the ground they launch a force outward that damages and knocks back foes
@@ -45,8 +43,6 @@ public class DashPowers : MonoBehaviour
             difference = difference.normalized * player.groundPoundForce;
             enemy.GetComponent<Rigidbody2D>().AddForce(difference,ForceMode2D.Impulse);
         }
-        leftParticleSystem.Play();
-        rightParticleSystem.Play();
 
 
     }
@@ -55,8 +51,20 @@ public class DashPowers : MonoBehaviour
     public bool DashAttack(Vector2 oldPosition, Vector2 newPosition) 
     {
         //cast a line between the old position and the new position.
+        RaycastHit2D[] rays;
+        rays = Physics2D.RaycastAll(oldPosition,(oldPosition-newPosition).normalized,(oldPosition - newPosition).magnitude,player.groundPoundLayer);
+        for (int i = 0; i < rays.Length; i++)
+        {
+            for (int j = 0; j < player.HitableEnemieTags.Length; j++)
+            {
+                if (rays[i].transform.tag == player.HitableEnemieTags[j])
+                {
+                    Debug.Log("Hit Enemy");
+                }
+            }
+        }
         //if theres something there find its tag
-            //if the matches an attackable foe, call their damage script, rn just trigger a debug
+        //if the matches an attackable foe, call their damage script, rn just trigger a debug
 
         return false;
 
