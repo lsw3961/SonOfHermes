@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     public InputReader reader;
     private SpriteRenderer spriteRenderer;
-
+    public IsGrounded GroundedComponent;
     //Varibales needed for running
     public Vector2 lastDirection = Vector2.zero;
     private Vector2 dir = Vector2.zero;
@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetBool("isGrounded", true);
         anim.SetBool("isRunning", false);
-
     }
 
     private void SetDefaultValues()
@@ -77,8 +76,15 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (rb.constraints != RigidbodyConstraints2D.FreezePositionX && !player.isRunning) 
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+
+        }
         if (player.isRunning)
         {
+
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             Walk(dir);
         }
         HangTime();
@@ -182,7 +188,7 @@ public class Movement : MonoBehaviour
     /// </summary>
     private void IsGrounded()
     {
-        if (Physics2D.OverlapCircle((Vector2)this.transform.position + bottomOffset, overlapRadius, groundedLayer))
+        if (GroundedComponent.isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             onGround = true;

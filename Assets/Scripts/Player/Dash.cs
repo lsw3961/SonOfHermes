@@ -24,7 +24,7 @@ public class Dash : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
-    private TrailRenderer trailRenderer;
+//    private TrailRenderer trailRenderer;
     [SerializeField] private ParticleSystem dashParticleSystem;
     private DashPowers powers;
 
@@ -33,7 +33,7 @@ public class Dash : MonoBehaviour
     void Start()
     {
         SetDefaultValues();
-        trailRenderer = GetComponent<TrailRenderer>();
+        //trailRenderer = GetComponent<TrailRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         movement = GetComponent<Movement>();
@@ -171,11 +171,11 @@ public class Dash : MonoBehaviour
 
     private void ChangeEffects()
     {
-        trailRenderer.startColor = new Color(0, 220, 235, 150);
-        trailRenderer.endColor = new Color(0, 220, 235, 150);
-
-        playerLight.pointLightOuterRadius *= 3;
-        playerLight.pointLightInnerRadius *= 3;
+//        trailRenderer.startColor = new Color(0, 220, 235, 150);
+//        trailRenderer.endColor = new Color(0, 220, 235, 150);
+//
+//        playerLight.pointLightOuterRadius *= 3;
+//        playerLight.pointLightInnerRadius *= 3;
     }
 
     private void JumpingDash() 
@@ -228,10 +228,10 @@ public class Dash : MonoBehaviour
     IEnumerator ColorDash()
     {
         yield return new WaitForSeconds(.2f);
-        trailRenderer.startColor = new Color(255, 220, 0, 150);
-        trailRenderer.endColor = new Color(255, 220, 0, 150);
-        playerLight.pointLightOuterRadius /= 3;
-        playerLight.pointLightInnerRadius /= 3;
+//        trailRenderer.startColor = new Color(255, 220, 0, 150);
+//        trailRenderer.endColor = new Color(255, 220, 0, 150);
+//        playerLight.pointLightOuterRadius /= 3;
+//        playerLight.pointLightInnerRadius /= 3;
 
         player.isDashing = false;
     }

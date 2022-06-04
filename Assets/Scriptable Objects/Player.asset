@@ -35,9 +35,9 @@ MonoBehaviour:
   HitableEnemieTags:
   - Enemy
   isRunning: 0
-  isJumping: 0
+  isJumping: 1
   isDashing: 0
-  isGrounded: 1
+  isGrounded: 0
   hasDash: 1
   hasJumpDash: 1
   hasDashAttack: 0
